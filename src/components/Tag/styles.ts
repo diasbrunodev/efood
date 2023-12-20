@@ -4,7 +4,7 @@ import { cores } from '../../styles'
 
 export const TagContainer = styled.div<Props>`
   background-color: ${cores.colorFontMain};
-  color: ${cores.background};
+  color: ${cores.backgroundFooter};
   font-size: 12px;
   font-weight: 700;
   padding: ${(props) => (props.type === 'italiana' ? '6px 10px' : '6px 4px')};

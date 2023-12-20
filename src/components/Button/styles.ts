@@ -5,9 +5,9 @@ import { cores } from '../../styles'
 
 export const ButtonContainer = styled(Link)<Props>`
   background-color: ${(props) =>
-    props.type === 'saibaMais' ? cores.colorFontMain : cores.background};
+    props.type === 'saibaMais' ? cores.colorFontMain : cores.backgroundFooter};
   color: ${(props) =>
-    props.type === 'saibaMais' ? cores.background : cores.colorFontMain};
+    props.type === 'saibaMais' ? cores.backgroundFooter : cores.colorFontMain};
   padding: ${(props) => (props.type === 'saibaMais' ? '4px 6px' : '4px 84px')};
   font-size: 14px;
   font-weight: 700;

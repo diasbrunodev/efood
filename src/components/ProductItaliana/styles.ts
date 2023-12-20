@@ -6,7 +6,7 @@ export const Card = styled.div`
   background-color: ${cores.colorFontMain};
   margin-bottom: 48px;
   padding: 8px;
-  color: ${cores.background};
+  color: ${cores.backgroundFooter};
 
   img {
     margin-bottom: 8px;

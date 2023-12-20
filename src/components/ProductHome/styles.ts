@@ -36,6 +36,8 @@ export const Classification = styled.div`
 
 export const Note = styled.p`
   margin-right: 8px;
+  font-size: 18px;
+  font-weight: 700;
 `
 
 export const DivDescription = styled.div`
