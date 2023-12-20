@@ -1,0 +1,31 @@
+import styled from 'styled-components'
+import { cores } from '../../styles'
+
+export const FooterContainer = styled.div`
+  background-color: ${cores.backgroundFooter};
+`
+
+export const FooterImage = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+`
+
+export const SocialMediaIcons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 32px auto 80px;
+`
+
+export const TextFood = styled.div`
+  width: 480px;
+  margin: auto;
+  padding-bottom: 40px;
+
+  p {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 400;
+  }
+`
