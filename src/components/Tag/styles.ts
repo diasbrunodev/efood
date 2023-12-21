@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Props } from '.'
-import { cores } from '../../styles'
+import { cores } from '../../styles/styles'
 
 export const TagContainer = styled.div<Props>`
   background-color: ${cores.colorFontMain};

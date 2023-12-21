@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { cores } from '../../styles/styles'
 
 export const Card = styled.div`
   width: 320px;
@@ -13,17 +13,17 @@ export const Card = styled.div`
   }
 `
 
-export const CardDescription = styled.div`
+export const CardDescriptionLaDolce = styled.div`
   h3 {
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: 900;
   }
+`
 
-  p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    margin-bottom: 8px;
-  }
+export const Descricao = styled.p`
+  line-height: 22px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 400;
 `

@@ -4,6 +4,7 @@ import {
   Carrinho,
   ContainerItaliana,
   ContainerList,
+  ContainerRestauranteCarrinho,
   Imagem,
   Italiana,
   LaDolce,
@@ -21,12 +22,14 @@ export type Props = {
 export const ProductsListItaliana = ({ dishesMenuItaliana }: Props) => (
   <ContainerItaliana>
     <Header />
-    <Restaurantes>
-      <p>Restaurantes</p>
-    </Restaurantes>
-    <Carrinho>
-      <p>0 produto(s) no carrinho</p>
-    </Carrinho>
+    <ContainerRestauranteCarrinho>
+      <Restaurantes>
+        <p>Restaurantes</p>
+      </Restaurantes>
+      <Carrinho>
+        <p>0 produto(s) no carrinho</p>
+      </Carrinho>
+    </ContainerRestauranteCarrinho>
     <Imagem style={{ backgroundImage: `url(${fundoItaliana})` }}>
       <Italiana>
         <p>Italiana</p>

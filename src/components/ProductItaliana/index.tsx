@@ -1,6 +1,5 @@
+import { Card, CardDescriptionLaDolce, Descricao } from './styles'
 import { Button } from '../Button'
-
-import { Card, CardDescription } from './styles'
 
 export type Props = {
   title: string
@@ -11,14 +10,12 @@ export type Props = {
 export const ProductItaliana = ({ image, title, description }: Props) => (
   <Card>
     <img src={image} alt={title} />
-    <CardDescription>
+    <CardDescriptionLaDolce>
       <h3>{title}</h3>
-      <p>{description}</p>
-      <div>
-        <Button type="carrinho" to="/carrinho" title="Adicionar ao carrinho">
-          Adicionar ao carrinho
-        </Button>
-      </div>
-    </CardDescription>
+      <Descricao>{description}</Descricao>
+      <Button type="carrinho" to="/carrinho" title="Adicionar ao carrinho">
+        Adicionar ao carrinho
+      </Button>
+    </CardDescriptionLaDolce>
   </Card>
 )

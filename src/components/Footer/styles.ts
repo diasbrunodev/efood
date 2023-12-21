@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { cores } from '../../styles/styles'
 
 export const FooterContainer = styled.div`
   background-color: ${cores.backgroundFooter};

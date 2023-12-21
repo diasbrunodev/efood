@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { cores } from '../../styles/styles'
 
 export const Card = styled.div`
   position: relative;
@@ -27,6 +27,7 @@ export const DivTitle = styled.div`
 
   h3 {
     font-size: 18px;
+    font-weight: 700;
   }
 `
 

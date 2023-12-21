@@ -1,8 +1,19 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { cores } from '../../styles/styles'
 
 export const ContainerList = styled.section`
   padding: 80px 170px 72px;
+`
+
+export const ContainerItaliana = styled.div`
+  position: relative;
+`
+
+export const ContainerRestauranteCarrinho = styled.div`
+  p {
+    font-size: 18px;
+    font-weight: 900;
+  }
 `
 
 export const Restaurantes = styled.div`
@@ -17,15 +28,6 @@ export const Carrinho = styled.div`
   position: absolute;
   top: 60px;
   right: 170px;
-`
-
-export const ContainerItaliana = styled.div`
-  position: relative;
-
-  p {
-    font-size: 18px;
-    font-weight: 900;
-  }
 `
 
 export const Imagem = styled.div`
