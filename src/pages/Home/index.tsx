@@ -4,6 +4,7 @@ import { Dish } from '../../models'
 import sushi from '../../assets/images/hiokiSushi.png'
 import massa from '../../assets/images/massaItaliana.png'
 import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 
 const menuHome: Dish[] = [
   {
@@ -73,5 +74,6 @@ export const Home = () => (
   <>
     <Header />
     <ProductsList dishesMenu={menuHome} />
+    <Footer />
   </>
 )
