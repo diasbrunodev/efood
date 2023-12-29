@@ -4,6 +4,13 @@ import { cores } from '../../styles/styles'
 export const Card = styled.div`
   position: relative;
   margin-bottom: 48px;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
+  }
 `
 
 export const CardDescription = styled.div`

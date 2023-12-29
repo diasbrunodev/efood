@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { DishItaliana } from '../../models'
 import { ProductItaliana } from '../ProductItaliana'
 import {
@@ -24,18 +25,50 @@ import imagemModal from '../../assets/images/image_modal.png'
 import { Header } from '../Header'
 import { Button } from '../Button'
 import { Footer } from '../Footer'
-import { useState } from 'react'
 
 export type Props = {
   dishesMenuItaliana: DishItaliana[]
 }
 
+type ModalState = {
+  isVisible: boolean
+  title: string
+  modalDescription: string[]
+  preco: number
+}
+
 export const ProductsListItaliana = ({ dishesMenuItaliana }: Props) => {
-  const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const [modalTitle, setModalTitle] = useState('')
+  const [modaldescription, setModalDescription] = useState([''])
+  const [modalPreco, setModalPreco] = useState<number>()
+
+  const [modal, setModal] = useState<ModalState>({
+    isVisible: false,
+    title: '',
+    modalDescription: [''],
+    preco: 0
+  })
+
+  const closeModal = () => {
+    setModal({
+      isVisible: false,
+      title: '',
+      modalDescription: [''],
+      preco: 0
+    })
+  }
+
+  const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
 
   return (
     <ContainerItaliana>
       <Header />
+
       <ContainerRestauranteCarrinho>
         <Restaurantes>
           <p>Restaurantes</p>
@@ -55,7 +88,20 @@ export const ProductsListItaliana = ({ dishesMenuItaliana }: Props) => {
       <ContainerList className="container">
         <List>
           {dishesMenuItaliana.map((dish) => (
-            <li key={dish.id} onClick={() => setModalEstaAberto(true)}>
+            <li
+              key={dish.id}
+              onClick={() => {
+                setModalTitle(dish.title)
+                setModalDescription(dish.descriptionModal)
+                setModalPreco(dish.preco)
+                setModal({
+                  isVisible: true,
+                  title: dish.title,
+                  modalDescription: dish.descriptionModal,
+                  preco: dish.preco
+                })
+              }}
+            >
               <ProductItaliana
                 image={dish.image}
                 title={dish.title}
@@ -66,13 +112,15 @@ export const ProductsListItaliana = ({ dishesMenuItaliana }: Props) => {
         </List>
       </ContainerList>
 
-      <Modal className={modalEstaAberto ? 'visivel' : ''}>
+      <Modal className={modal.isVisible ? 'visivel' : ''}>
         <ModalContent>
           <ImgFechar>
             <img
               src={fechar}
               alt="Ícone de fechar"
-              onClick={() => setModalEstaAberto(false)}
+              onClick={() => {
+                closeModal()
+              }}
             />
           </ImgFechar>
           <ContentProduct>
@@ -80,37 +128,26 @@ export const ProductsListItaliana = ({ dishesMenuItaliana }: Props) => {
               <img src={imagemModal} />
             </div>
             <ContentTextButton>
-              <h3>Pizza Marguerita</h3>
+              <h3>{modalTitle}</h3>
               <ContainerP>
-                <p>
-                  A pizza Margherita é uma pizza clássica da culinária italiana,
-                  reconhecida por sua simplicidade e sabor inigualável. Ela é
-                  feita com uma base de massa fina e crocante, coberta com molho
-                  de tomate fresco, queijo mussarela de alta qualidade,
-                  manjericão fresco e azeite de oliva extra-virgem. A combinação
-                  de sabores é perfeita, com o molho de tomate suculento e
-                  ligeiramente ácido, o queijo derretido e cremoso e as folhas
-                  de manjericão frescas, que adicionam um toque de sabor
-                  herbáceo. É uma pizza simples, mas deliciosa, que agrada a
-                  todos os paladares e é uma ótima opção para qualquer ocasião.
-                </p>
-                <p>Serve: de 2 a 3 pessoas</p>
+                {modaldescription.map((text) => (
+                  <p key={text}>{text}</p>
+                ))}
               </ContainerP>
               <Button
                 type="saibaMais"
                 to="/carrinho"
-                title="Adicionar ao carrinho - R$ 60,90"
+                // title="Adicionar ao carrinho - R$ 60,90"
+                title={`Adicionar ao carrinho - ${formataPreco(modalPreco)}`}
               >
-                Adicionar ao carrinho - R$ 60,90
+                {`Adicionar ao carrinho - ${formataPreco(modalPreco)}`}
               </Button>
             </ContentTextButton>
           </ContentProduct>
         </ModalContent>
-        <div
-          onClick={() => setModalEstaAberto(false)}
-          className="overlay"
-        ></div>
+        <div onClick={() => closeModal()} className="overlay"></div>
       </Modal>
+
       <Footer />
     </ContainerItaliana>
   )
