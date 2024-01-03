@@ -1,4 +1,4 @@
-import { TagContainer } from './styles'
+import { Span, TagContainer } from './styles'
 
 export type Props = {
   type?: 'italiana' | 'destaque'
@@ -6,5 +6,7 @@ export type Props = {
 }
 
 export const Tag = ({ children, type = 'italiana' }: Props) => (
-  <TagContainer type={type}>{children}</TagContainer>
+  <Span>
+    <TagContainer type={type}>{children}</TagContainer>
+  </Span>
 )

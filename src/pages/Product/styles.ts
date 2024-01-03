@@ -1,15 +1,9 @@
 import styled from 'styled-components'
 import { cores } from '../../styles/styles'
-import { ButtonContainer } from '../Button/styles'
-
-export const AllContainer = styled.section`
-  width: 1024px;
-  margin: auto;
-`
+import { ButtonContainer } from '../../components/Button'
 
 export const ContainerList = styled.section`
-  padding-top: 80px;
-  padding-bottom: 72px;
+  padding: 80px 170px 72px;
 `
 
 export const ContainerItaliana = styled.div`
@@ -71,6 +65,10 @@ export const Italiana = styled.div`
   p {
     font-weight: 100;
   }
+
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `
 
 export const LaDolce = styled.div`
@@ -87,19 +85,17 @@ export const LaDolce = styled.div`
 export const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 32px;
+  column-gap: 32px;
   margin-top: 56px;
   list-style: none;
-  margin-bottom: 48px;
-  max-width: 1024px;
-`
 
-export const AllCard = styled.li`
-  cursor: pointer;
+  li {
+    cursor: pointer;
+  }
 `
 
 export const Modal = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
@@ -107,7 +103,7 @@ export const Modal = styled.div`
   height: 100%;
   display: none;
   justify-content: center;
-  align-items: center;
+  padding-top: 502px;
 
   &.visivel {
     display: flex;
@@ -119,7 +115,7 @@ export const Modal = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.73);
     cursor: pointer;
   }
 `
@@ -127,9 +123,9 @@ export const Modal = styled.div`
 export const ModalContent = styled.div`
   background-color: ${cores.colorFontMain};
   color: ${cores.backgroundCard};
+  max-width: 1024px;
   height: 344px;
   z-index: 1;
-  max-width: 1024px;
 `
 
 export const ImgFechar = styled.div`
@@ -143,18 +139,6 @@ export const ImgFechar = styled.div`
 export const ContentProduct = styled.div`
   padding: 8px 32px 32px 32px;
   display: flex;
-`
-
-export const ModalImg = styled.div`
-  width: 280px;
-  height: 280px;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `
 
 export const ContentTextButton = styled.div`
@@ -179,7 +163,6 @@ export const ContentTextButton = styled.div`
 `
 
 export const ContainerP = styled.div`
-  width: 656px;
   height: 176px;
   display: flex;
   flex-direction: column;

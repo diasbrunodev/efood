@@ -5,6 +5,7 @@ export type Props = {
   title: string
   description: string
   image: string
+  type: 'saibaMais' | 'carrinho'
 }
 
 export const ProductItaliana = ({ image, title, description }: Props) => {
@@ -15,7 +16,7 @@ export const ProductItaliana = ({ image, title, description }: Props) => {
         <CardDescriptionLaDolce>
           <h3>{title}</h3>
           <Descricao>{description}</Descricao>
-          <Button type="carrinho" to="/carrinho" title="Adicionar ao carrinho">
+          <Button type="carrinho" title="Adicionar ao carrinho">
             Adicionar ao carrinho
           </Button>
         </CardDescriptionLaDolce>

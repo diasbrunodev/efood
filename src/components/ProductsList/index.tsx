@@ -1,4 +1,3 @@
-// import { Dish } from '../../models'
 import { Loja } from '../../pages/Home'
 import { ProductHome } from '../ProductHome'
 import { ContainerList, List } from './styles'
@@ -30,6 +29,7 @@ export const ProductsList = ({ dishesMenu }: Props) => {
             type={dish.tipo}
             infos={getLojaTags(dish)}
             destacado={dish.destacado}
+            id={dish.id}
           />
         ))}
       </List>

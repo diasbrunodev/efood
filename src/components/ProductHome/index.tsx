@@ -20,6 +20,7 @@ export type Props = {
   type: string
   infos: string[]
   destacado: boolean
+  id: number
 }
 
 export const ProductHome = ({
@@ -29,11 +30,12 @@ export const ProductHome = ({
   description,
   type,
   infos,
-  destacado
+  destacado,
+  id
 }: Props) => {
   const getDescricao = (descricao: string) => {
-    if (descricao.length > 196) {
-      return descricao.slice(0, 193) + '...'
+    if (descricao.length > 245) {
+      return descricao.slice(0, 242) + '...'
     }
     return descricao
   }
@@ -58,7 +60,7 @@ export const ProductHome = ({
         <DivDescription>
           <p>{getDescricao(description)}</p>
           <div>
-            <Button type="saibaMais" to="/italiana" title="Saiba mais">
+            <Button type="saibaMais" to={`/product/${id}`} title="Saiba mais">
               Saiba mais
             </Button>
           </div>

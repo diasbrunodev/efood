@@ -5,6 +5,7 @@ export type Props = {
   title: string
   to?: string
   children: string
+  onClick?: () => void
 }
 
 export const Button = ({ type, title, children, to }: Props) => (
@@ -14,3 +15,5 @@ export const Button = ({ type, title, children, to }: Props) => (
     </ButtonContainer>
   </div>
 )
+
+export { ButtonContainer }

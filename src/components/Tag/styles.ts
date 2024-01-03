@@ -2,6 +2,12 @@ import styled from 'styled-components'
 import { Props } from '.'
 import { cores } from '../../styles/styles'
 
+export const Span = styled.span`
+  ::first-letter {
+    text-transform: uppercase;
+  }
+`
+
 export const TagContainer = styled.div<Props>`
   background-color: ${cores.colorFontMain};
   color: ${cores.backgroundFooter};

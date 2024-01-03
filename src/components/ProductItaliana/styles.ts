@@ -2,14 +2,17 @@ import styled from 'styled-components'
 import { cores } from '../../styles/styles'
 
 export const Card = styled.div`
-  width: 320px;
+  max-width: 320px;
   background-color: ${cores.colorFontMain};
-  margin-bottom: 48px;
   padding: 8px;
   color: ${cores.backgroundFooter};
 
   img {
+    display: block;
     margin-bottom: 8px;
+    width: 100%;
+    height: 167px;
+    object-fit: cover;
   }
 `
 
