@@ -1,17 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Loja } from '../Home'
-import { ProductsListItaliana } from '../../components/ProductsListItaliana'
-import {
-  Carrinho,
-  ContainerItaliana,
-  ContainerRestauranteCarrinho,
-  Imagem,
-  Italiana,
-  LaDolce,
-  Restaurantes
-} from './styles'
-import { Header } from '../../components/Header'
+import { ProductsListItaliana } from '../../components/ProductsListStore'
+import HeaderProductsListStore from '../../components/HeaderProductsListStore'
 
 const Product = () => {
   const { id } = useParams()
@@ -30,29 +21,8 @@ const Product = () => {
 
   return (
     <>
-      <ContainerItaliana>
-        <Header />
-
-        <ContainerRestauranteCarrinho>
-          <Restaurantes>
-            <p>Restaurantes</p>
-          </Restaurantes>
-          <Carrinho>
-            <p>0 produto(s) no carrinho</p>
-          </Carrinho>
-        </ContainerRestauranteCarrinho>
-
-        <Imagem style={{ backgroundImage: `url(${loja.capa})` }}>
-          <Italiana>
-            <p>{loja.tipo}</p>
-          </Italiana>
-          <LaDolce>
-            <p>{loja.titulo}</p>
-          </LaDolce>
-        </Imagem>
-
-        <ProductsListItaliana items={loja.cardapio} />
-      </ContainerItaliana>
+      <HeaderProductsListStore store={loja} />
+      <ProductsListItaliana items={loja?.cardapio} />
     </>
   )
 }

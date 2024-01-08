@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles/styles'
+import { breakpoints, cores } from '../../styles/styles'
 
 export const FooterContainer = styled.div`
   background-color: ${cores.backgroundFooter};
@@ -22,6 +22,10 @@ export const TextFood = styled.div`
   width: 480px;
   margin: auto;
   padding-bottom: 40px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 
   p {
     text-align: center;

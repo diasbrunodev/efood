@@ -1,5 +1,5 @@
 import { Loja } from '../../pages/Home'
-import { ProductHome } from '../ProductHome'
+import { ProductHome } from '../StoreHome'
 import { ContainerList, List } from './styles'
 
 export type Props = {

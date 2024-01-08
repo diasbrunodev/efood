@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles/styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -7,6 +8,11 @@ export const Imagem = styled.div`
   background-size: cover;
   padding-top: 40px;
   padding-bottom: 40px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    background-color: red;
+  }
 
   div {
     display: flex;

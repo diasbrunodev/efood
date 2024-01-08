@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles/styles'
+import { breakpoints, cores } from '../../styles/styles'
 import { ButtonContainer } from '../../components/Button'
 
 export const ContainerList = styled.section`
@@ -15,20 +15,47 @@ export const ContainerRestauranteCarrinho = styled.div`
     font-size: 18px;
     font-weight: 900;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    /* border: 1px solid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+  }
 `
 
 export const Restaurantes = styled.div`
-  display: inline-block;
   position: absolute;
-  top: 60px;
+  top: -308px;
   left: 170px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    left: 40px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    top: -290px;
+  }
 `
 
 export const Carrinho = styled.div`
-  display: inline-block;
+  cursor: pointer;
   position: absolute;
-  top: 60px;
-  right: 170px;
+  top: -308px;
+  right: 70px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    right: 40px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    top: -250px;
+    right: 50px;
+    left: 0;
+    margin-left: 40px;
+  }
 `
 
 export const Imagem = styled.div`
@@ -38,7 +65,7 @@ export const Imagem = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: 162px;
+  top: -204px;
 
   &::before {
     content: '';
@@ -69,6 +96,10 @@ export const Italiana = styled.div`
   ::first-letter {
     text-transform: uppercase;
   }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    left: 40px;
+  }
 `
 
 export const LaDolce = styled.div`
@@ -79,6 +110,10 @@ export const LaDolce = styled.div`
 
   p {
     font-weight: 900;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    left: 40px;
   }
 `
 

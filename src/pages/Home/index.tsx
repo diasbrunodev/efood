@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ProductsList } from '../../components/ProductsList'
-
-import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
+import { ProductsList } from '../../components/StoresListHome'
 
 export type CardapioItem = {
   foto: string
@@ -36,9 +33,7 @@ export const Home = () => {
 
   return (
     <>
-      <Header />
       <ProductsList dishesMenu={lojas} />
-      <Footer />
     </>
   )
 }
