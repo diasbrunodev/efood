@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const cores = {
+export const colors = {
   background: '#FFF8F2',
   backgroundFooter: '#FFEBD9',
   colorFontMain: '#E66767',
@@ -26,8 +26,8 @@ export const GlobalCss = createGlobalStyle`
     max-width: 1366px;
     width: 100%;
     margin: 0 auto;
-    background-color: ${cores.background};
-    color: ${cores.colorFontMain};
+    background-color: ${colors.background};
+    color: ${colors.colorFontMain};
 
     @media (max-width: ${breakpoints.desktop}) {
       max-width: 100%;

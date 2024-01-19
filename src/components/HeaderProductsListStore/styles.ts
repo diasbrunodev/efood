@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles/styles'
+import { breakpoints, colors } from '../../styles/styles'
 import { ButtonContainer } from '../../components/Button'
 
 export const ContainerList = styled.section`
@@ -14,15 +14,6 @@ export const ContainerRestauranteCarrinho = styled.div`
   p {
     font-size: 18px;
     font-weight: 900;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    /* border: 1px solid;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
   }
 `
 
@@ -78,7 +69,7 @@ export const Imagem = styled.div`
   }
 
   P {
-    color: ${cores.backgroundCard};
+    color: ${colors.backgroundCard};
     font-size: 32px;
   }
 `
@@ -156,8 +147,8 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
-  background-color: ${cores.colorFontMain};
-  color: ${cores.backgroundCard};
+  background-color: ${colors.colorFontMain};
+  color: ${colors.backgroundCard};
   max-width: 1024px;
   height: 344px;
   z-index: 1;
@@ -192,8 +183,8 @@ export const ContentTextButton = styled.div`
   }
 
   ${ButtonContainer} {
-    background-color: ${cores.backgroundFooter};
-    color: ${cores.colorFontMain};
+    background-color: ${colors.backgroundFooter};
+    color: ${colors.colorFontMain};
   }
 `
 

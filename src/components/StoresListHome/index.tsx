@@ -1,12 +1,14 @@
-import { Loja } from '../../pages/Home'
-import { ProductHome } from '../StoreHome'
-import { ContainerList, List } from './styles'
+import Loader from '../Loader'
+import { StoreHome } from '../StoreHome'
+
+import * as S from './styles'
 
 export type Props = {
-  dishesMenu: Loja[]
+  dishesMenu?: Loja[]
+  isLoading: boolean
 }
 
-export const ProductsList = ({ dishesMenu }: Props) => {
+export const StoreListHome = ({ dishesMenu, isLoading }: Props) => {
   const getLojaTags = (dish: Loja) => {
     const tags = []
 
@@ -16,23 +18,28 @@ export const ProductsList = ({ dishesMenu }: Props) => {
     return tags
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
-    <ContainerList className="container">
-      <List>
-        {dishesMenu.map((dish) => (
-          <ProductHome
-            key={dish.id}
-            image={dish.capa}
-            title={dish.titulo}
-            note={dish.avaliacao}
-            description={dish.descricao}
-            type={dish.tipo}
-            infos={getLojaTags(dish)}
-            destacado={dish.destacado}
-            id={dish.id}
-          />
-        ))}
-      </List>
-    </ContainerList>
+    <S.ContainerList className="container">
+      <S.List>
+        {dishesMenu &&
+          dishesMenu.map((dish) => (
+            <StoreHome
+              key={dish.id}
+              image={dish.capa}
+              title={dish.titulo}
+              note={dish.avaliacao}
+              description={dish.descricao}
+              type={dish.tipo}
+              infos={getLojaTags(dish)}
+              destacado={dish.destacado}
+              id={dish.id}
+            />
+          ))}
+      </S.List>
+    </S.ContainerList>
   )
 }

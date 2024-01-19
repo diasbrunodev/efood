@@ -1,10 +1,11 @@
-import { ProductItaliana } from '../ProductStore'
-import { AllCard, AllContainer, ContainerList, List } from './styles'
+import { ProductStore } from '../ProductStore'
+import Loader from '../Loader'
 
-import { CardapioItem } from '../../pages/Home'
+import * as S from './styles'
 
 export type Props = {
-  items: CardapioItem[]
+  items?: CardapioItem[]
+  isLoading: boolean
 }
 
 export type ModalState = {
@@ -16,7 +17,7 @@ export type ModalState = {
   porcao: string
 }
 
-export const ProductsListItaliana = ({ items }: Props) => {
+export const ProductsListStore = ({ items, isLoading }: Props) => {
   const getDescricao = (descricao: string) => {
     if (descricao.length > 160) {
       return descricao.slice(0, 157) + '...'
@@ -24,25 +25,30 @@ export const ProductsListItaliana = ({ items }: Props) => {
     return descricao
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <>
-      <AllContainer>
-        <ContainerList className="container">
-          <List>
-            {items.map((produto) => (
-              <AllCard key={produto.id}>
-                <ProductItaliana
-                  item={produto}
-                  image={produto.foto}
-                  title={produto.nome}
-                  description={getDescricao(produto.descricao)}
-                  type={'carrinho'}
-                />
-              </AllCard>
-            ))}
-          </List>
-        </ContainerList>
-      </AllContainer>
+      <S.AllContainer>
+        <S.ContainerList className="container">
+          <S.List>
+            {items &&
+              items.map((produto) => (
+                <S.AllCard key={produto.id}>
+                  <ProductStore
+                    item={produto}
+                    image={produto.foto}
+                    title={produto.nome}
+                    description={getDescricao(produto.descricao)}
+                    type={'carrinho'}
+                  />
+                </S.AllCard>
+              ))}
+          </S.List>
+        </S.ContainerList>
+      </S.AllContainer>
     </>
   )
 }

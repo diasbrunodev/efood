@@ -1,28 +1,24 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Loja } from '../Home'
-import { ProductsListItaliana } from '../../components/ProductsListStore'
+
+import { ProductsListStore } from '../../components/ProductsListStore'
 import HeaderProductsListStore from '../../components/HeaderProductsListStore'
+import { useGetProductIdQuery } from '../../services/api'
+
+type LojaParams = {
+  id: string
+}
 
 const Product = () => {
-  const { id } = useParams()
+  const { id } = useParams() as LojaParams
 
-  const [loja, setLoja] = useState<Loja>()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setLoja(res))
-  }, [id])
-
-  if (!loja) {
-    return <h3>Carregando...</h3>
-  }
+  const { data: loja, isLoading } = useGetProductIdQuery(id)
 
   return (
     <>
-      <HeaderProductsListStore store={loja} />
-      <ProductsListItaliana items={loja?.cardapio} />
+      <div>
+        <HeaderProductsListStore store={loja} isLoading={isLoading} />
+        <ProductsListStore items={loja?.cardapio} isLoading={isLoading} />
+      </div>
     </>
   )
 }

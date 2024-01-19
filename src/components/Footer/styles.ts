@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles/styles'
+import { breakpoints, colors } from '../../styles/styles'
 
 export const FooterContainer = styled.div`
-  background-color: ${cores.backgroundFooter};
+  background-color: ${colors.backgroundFooter};
 `
 
 export const FooterImage = styled.div`

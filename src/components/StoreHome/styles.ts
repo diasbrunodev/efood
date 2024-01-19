@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles/styles'
+import { colors } from '../../styles/styles'
 
 export const Card = styled.div`
   position: relative;
@@ -14,10 +14,10 @@ export const Card = styled.div`
 `
 
 export const CardDescription = styled.div`
-  background-color: ${cores.backgroundCard};
-  border-right: 1px solid ${cores.colorFontMain};
-  border-bottom: 1px solid ${cores.colorFontMain};
-  border-left: 1px solid ${cores.colorFontMain};
+  background-color: ${colors.backgroundCard};
+  border-right: 1px solid ${colors.colorFontMain};
+  border-bottom: 1px solid ${colors.colorFontMain};
+  border-left: 1px solid ${colors.colorFontMain};
 `
 
 export const Infos = styled.div`

@@ -1,22 +1,14 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  Card,
-  CardDescriptionLaDolce,
-  ContainerP,
-  ContentProduct,
-  ContentTextButton,
-  Descricao,
-  ImgFechar,
-  Modal,
-  ModalContent,
-  ModalImg
-} from './styles'
+
 import { Button } from '../Button'
-import fechar from '../../assets/images/fechar.png'
+
 import { ModalState } from '../ProductsListStore'
-import { CardapioItem } from '../../pages/Home'
 import { add, open } from '../../store/reducers/cart'
+
+import fechar from '../../assets/images/fechar.png'
+
+import * as S from './styles'
 
 type Props = {
   title: string
@@ -34,12 +26,13 @@ export const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
-export const ProductItaliana = ({ image, title, description, item }: Props) => {
+export const ProductStore = ({ image, title, description, item }: Props) => {
   const dispatch = useDispatch()
 
   const addToCart = () => {
     dispatch(add(item))
     dispatch(open())
+    closeModal()
   }
 
   const [modal, setModal] = useState<ModalState>({
@@ -78,7 +71,8 @@ export const ProductItaliana = ({ image, title, description, item }: Props) => {
 
   return (
     <>
-      <Card
+      <S.Card
+        title={`Clique aqui para ver mais detalhes de: ${title}`}
         onClick={() => {
           setModal({
             isVisible: true,
@@ -91,18 +85,18 @@ export const ProductItaliana = ({ image, title, description, item }: Props) => {
         }}
       >
         <img src={image} alt={title} />
-        <CardDescriptionLaDolce>
+        <S.CardDescriptionLaDolce>
           <h3>{title}</h3>
-          <Descricao>{getDescricao(description)}</Descricao>
+          <S.Descricao>{getDescricao(description)}</S.Descricao>
           <Button type="carrinho" title="Mais detalhes">
             Mais detalhes
           </Button>
-        </CardDescriptionLaDolce>
-      </Card>
+        </S.CardDescriptionLaDolce>
+      </S.Card>
 
-      <Modal className={modal.isVisible ? 'visivel' : ''}>
-        <ModalContent>
-          <ImgFechar>
+      <S.Modal className={modal.isVisible ? 'visivel' : ''}>
+        <S.ModalContent>
+          <S.ImgFechar>
             <img
               src={fechar}
               alt="Ícone de fechar"
@@ -110,17 +104,17 @@ export const ProductItaliana = ({ image, title, description, item }: Props) => {
                 closeModal()
               }}
             />
-          </ImgFechar>
+          </S.ImgFechar>
 
-          <ContentProduct>
-            <ModalImg>
+          <S.ContentProduct>
+            <S.ModalImg>
               <img src={modal.foto} alt={modal.title} />
-            </ModalImg>
+            </S.ModalImg>
 
-            <ContentTextButton>
+            <S.ContentTextButton>
               <h3>{modal.title}</h3>
 
-              <ContainerP>
+              <S.ContainerP>
                 <p>{getDescricaoModal(modal.modalDescription)}</p>
 
                 {modal.porcao.length > 8 ? (
@@ -128,7 +122,7 @@ export const ProductItaliana = ({ image, title, description, item }: Props) => {
                 ) : (
                   <p>{`Serve: ${modal.porcao}`}</p>
                 )}
-              </ContainerP>
+              </S.ContainerP>
               <div onClick={addToCart}>
                 <Button
                   type="saibaMais"
@@ -137,11 +131,11 @@ export const ProductItaliana = ({ image, title, description, item }: Props) => {
                   {`Adicionar ao carrinho - ${formataPreco(modal.preco)}`}
                 </Button>
               </div>
-            </ContentTextButton>
-          </ContentProduct>
-        </ModalContent>
+            </S.ContentTextButton>
+          </S.ContentProduct>
+        </S.ModalContent>
         <div onClick={() => closeModal()} className="overlay"></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

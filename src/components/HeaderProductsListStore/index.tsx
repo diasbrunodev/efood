@@ -1,22 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Loja } from '../../pages/Home'
-import {
-  Carrinho,
-  ContainerItaliana,
-  ContainerRestauranteCarrinho,
-  Imagem,
-  Italiana,
-  LaDolce,
-  Restaurantes
-} from './styles'
+
+import Loader from '../Loader'
+
 import { open } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
 
+import * as S from './styles'
+
 type Props = {
-  store: Loja
+  store?: Loja
+  isLoading: boolean
 }
 
-const Product = ({ store }: Props) => {
+const Product = ({ store, isLoading }: Props) => {
   const dispatch = useDispatch()
 
   const { items } = useSelector((state: RootReducer) => state.cart)
@@ -25,27 +21,33 @@ const Product = ({ store }: Props) => {
     dispatch(open())
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <>
-      <ContainerItaliana>
-        <ContainerRestauranteCarrinho>
-          <Restaurantes>
+      <S.ContainerItaliana>
+        <S.ContainerRestauranteCarrinho>
+          <S.Restaurantes>
             <p>Restaurantes</p>
-          </Restaurantes>
-          <Carrinho onClick={openCart}>
+          </S.Restaurantes>
+          <S.Carrinho onClick={openCart}>
             <p>{items.length} produto(s) no carrinho</p>
-          </Carrinho>
-        </ContainerRestauranteCarrinho>
+          </S.Carrinho>
+        </S.ContainerRestauranteCarrinho>
 
-        <Imagem style={{ backgroundImage: `url(${store.capa})` }}>
-          <Italiana>
-            <p>{store.tipo}</p>
-          </Italiana>
-          <LaDolce>
-            <p>{store.titulo}</p>
-          </LaDolce>
-        </Imagem>
-      </ContainerItaliana>
+        {store && (
+          <S.Imagem style={{ backgroundImage: `url(${store.capa})` }}>
+            <S.Italiana>
+              <p>{store.tipo}</p>
+            </S.Italiana>
+            <S.LaDolce>
+              <p>{store.titulo}</p>
+            </S.LaDolce>
+          </S.Imagem>
+        )}
+      </S.ContainerItaliana>
     </>
   )
 }

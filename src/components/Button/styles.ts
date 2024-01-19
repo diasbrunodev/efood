@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Props } from '.'
-import { cores } from '../../styles/styles'
+import { colors } from '../../styles/styles'
 
 export const ButtonContainer = styled(Link)<Props>`
   background-color: ${(props) =>
-    props.type === 'saibaMais' ? cores.colorFontMain : cores.backgroundFooter};
+    props.type === 'saibaMais'
+      ? colors.colorFontMain
+      : colors.backgroundFooter};
   color: ${(props) =>
-    props.type === 'saibaMais' ? cores.backgroundFooter : cores.colorFontMain};
+    props.type === 'saibaMais'
+      ? colors.backgroundFooter
+      : colors.colorFontMain};
   padding: ${(props) => (props.type === 'saibaMais' ? '4px 6px' : '4px 84px')};
   font-size: 14px;
   font-weight: 700;

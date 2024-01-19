@@ -2,15 +2,8 @@ import { Button } from '../Button'
 import { Tag } from '../Tag'
 
 import estrela from '../../assets/images/estrela.svg'
-import {
-  Card,
-  CardDescription,
-  Classification,
-  DivDescription,
-  DivTitle,
-  Infos,
-  Note
-} from './styles'
+
+import * as S from './styles'
 
 export type Props = {
   title: string
@@ -23,7 +16,7 @@ export type Props = {
   id: number
 }
 
-export const ProductHome = ({
+export const StoreHome = ({
   image,
   title,
   note,
@@ -41,31 +34,31 @@ export const ProductHome = ({
   }
 
   return (
-    <Card>
+    <S.Card>
       <img src={image} alt={title} />
 
-      <Infos>
+      <S.Infos>
         {destacado && <Tag>{infos.join()}</Tag>}
         <Tag>{type}</Tag>
-      </Infos>
+      </S.Infos>
 
-      <CardDescription>
-        <DivTitle>
+      <S.CardDescription>
+        <S.DivTitle>
           <h3>{title}</h3>
-          <Classification>
-            <Note>{note}</Note>
+          <S.Classification>
+            <S.Note>{note}</S.Note>
             <img src={estrela} alt={title} />
-          </Classification>
-        </DivTitle>
-        <DivDescription>
+          </S.Classification>
+        </S.DivTitle>
+        <S.DivDescription>
           <p>{getDescricao(description)}</p>
           <div>
             <Button type="saibaMais" to={`/product/${id}`} title="Saiba mais">
               Saiba mais
             </Button>
           </div>
-        </DivDescription>
-      </CardDescription>
-    </Card>
+        </S.DivDescription>
+      </S.CardDescription>
+    </S.Card>
   )
 }

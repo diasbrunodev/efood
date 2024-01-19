@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles/styles'
+import { breakpoints, colors } from '../../styles/styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
   max-width: 320px;
   width: 100%;
-  background-color: ${cores.colorFontMain};
+  background-color: ${colors.colorFontMain};
   padding: 8px;
-  color: ${cores.backgroundFooter};
+  color: ${colors.backgroundFooter};
+  cursor: pointer;
 
   img {
     display: block;
@@ -16,14 +17,6 @@ export const Card = styled.div`
     height: 167px;
     object-fit: cover;
   }
-
-  /* @media (max-width: ${breakpoints.desktop}) {
-    background-color: red;
-    height: 360px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  } */
 `
 
 export const CardDescriptionLaDolce = styled.div`
@@ -37,6 +30,7 @@ export const CardDescriptionLaDolce = styled.div`
     max-width: 100%;
     width: 100%;
     text-align: center;
+    white-space: nowrap;
   }
 `
 
@@ -63,6 +57,7 @@ export const Modal = styled.div`
   align-items: center;
 
   @media (max-width: ${breakpoints.tablet}) {
+    z-index: 1;
   }
 
   &.visivel {
@@ -81,8 +76,8 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
-  background-color: ${cores.colorFontMain};
-  color: ${cores.backgroundCard};
+  background-color: ${colors.colorFontMain};
+  color: ${colors.backgroundCard};
   height: 344px;
   z-index: 1;
   max-width: 1024px;
@@ -92,7 +87,7 @@ export const ModalContent = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    height: 100%;
+    height: 70%;
   }
 `
 
@@ -110,6 +105,7 @@ export const ContentProduct = styled.div`
 
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
+    padding: 8px 32px 32px;
   }
 `
 
@@ -129,12 +125,17 @@ export const ModalImg = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    width: 100%;
+    width: 30%;
+    height: 30%;
   }
 `
 
 export const ContentTextButton = styled.div`
   margin-left: 24px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-left: 0;
+  }
 
   h3 {
     font-size: 18px;
@@ -142,7 +143,8 @@ export const ContentTextButton = styled.div`
     margin-bottom: 16px;
 
     @media (max-width: ${breakpoints.tablet}) {
-      margin-top: 16px;
+      font-size: 18px;
+      margin-top: 8px;
     }
   }
 
@@ -152,16 +154,17 @@ export const ContentTextButton = styled.div`
     line-height: 22px;
 
     @media (max-width: ${breakpoints.tablet}) {
+      font-size: 14px;
       margin-bottom: 8px;
     }
   }
 
   ${ButtonContainer} {
-    background-color: ${cores.backgroundFooter};
-    color: ${cores.colorFontMain};
+    background-color: ${colors.backgroundFooter};
+    color: ${colors.colorFontMain};
 
     @media (max-width: ${breakpoints.tablet}) {
-      margin-top: 24px;
+      margin-top: 16px;
     }
   }
 `
@@ -178,7 +181,7 @@ export const ContainerP = styled.div`
     width: 100%;
   }
 
-  /* @media (max-width: ${breakpoints.tablet}) {
-    background-color: red;
-  } */
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 24px;
+  }
 `

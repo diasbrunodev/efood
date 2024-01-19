@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles/styles'
+import { breakpoints, colors } from '../../styles/styles'
 
 export const AllContainer = styled.section`
   width: 1024px;
@@ -61,7 +61,7 @@ export const Imagem = styled.div`
   }
 
   P {
-    color: ${cores.backgroundCard};
+    color: ${colors.backgroundCard};
     font-size: 32px;
   }
 `
