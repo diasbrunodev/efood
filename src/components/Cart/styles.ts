@@ -189,6 +189,10 @@ export const ContainerForm = styled.div`
 export const InputDivNumber = styled.div`
   display: flex;
   gap: 34px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+  }
 `
 
 export const ContainerButton = styled.div`
@@ -202,12 +206,20 @@ export const FormContainerPayment = styled.div`
 
 export const InputDivCardNumber = styled.div`
   display: flex;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+  }
 `
 
 export const InputCardNumber = styled.div`
   input {
     width: 228px;
     margin-right: 30px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 100%;
+    }
   }
 `
 

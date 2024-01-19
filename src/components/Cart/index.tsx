@@ -360,7 +360,9 @@ const Cart = () => {
             <S.Overlay onClick={goCloseCart} />
             <S.Sidebar>
               <S.ContainerForm>
-                <h3>Pagamento - Valor a pagar R$ 190,90</h3>
+                <h3>
+                  Pagamento - Valor a pagar {formataPreco(getTotalPrice())}
+                </h3>
                 <>
                   <div>
                     <label htmlFor="carDisplayName">Nome no cartão</label>
