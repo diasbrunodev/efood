@@ -198,9 +198,58 @@ const Cart = () => {
   const checkInputHasError = (fieldName: string) => {
     const isTouched = fieldName in form.touched
     const isInvalid = fieldName in form.errors
-    const hasError = isTouched && isInvalid
+    const isValue = fieldName in form.values
+
+    const hasError = isTouched && isInvalid && !isValue
 
     return hasError
+  }
+
+  const checkFullName = (fieldName: string) => {
+    const isTouched = fieldName in form.touched
+
+    const hasError = !isTouched
+
+    return hasError
+  }
+
+  const checkInputDeliveryHasError = (fieldName: string) => {
+    const isInvalid = fieldName in form.errors
+    const isValue = fieldName in form.values
+
+    const hasError = isInvalid || !isValue
+
+    return hasError
+  }
+
+  const checkDeliveryHasError = () => {
+    const receiver = checkFullName('fullName')
+    const address = checkInputDeliveryHasError('address')
+    const city = checkInputDeliveryHasError('city')
+    const cep = checkInputDeliveryHasError('cep')
+    const number = checkInputDeliveryHasError('number')
+
+    if (receiver || address || city || cep || number) {
+      return true
+    }
+  }
+
+  const checkPaymentHasError = () => {
+    const carDisplayName = checkInputDeliveryHasError('carDisplayName')
+    const cardNumber = checkInputDeliveryHasError('cardNumber')
+    const cardCode = checkInputDeliveryHasError('cardCode')
+    const expiresMonth = checkInputDeliveryHasError('expiresMonth')
+    const expiresYear = checkInputDeliveryHasError('expiresYear')
+
+    if (
+      carDisplayName ||
+      cardNumber ||
+      cardCode ||
+      expiresMonth ||
+      expiresYear
+    ) {
+      return true
+    }
   }
 
   return (
@@ -337,17 +386,28 @@ const Cart = () => {
                   </div>
 
                   <S.ContainerButton>
-                    <div onClick={goToCardPayment}>
-                      <Button title="Continuar com o pagamento" type="carrinho">
-                        Continuar com o pagamento
-                      </Button>
-                    </div>
-
-                    <div onClick={returnCart}>
-                      <Button title="Voltar para o carrinho" type="carrinho">
-                        Voltar para o carrinho
-                      </Button>
-                    </div>
+                    {checkDeliveryHasError() ? (
+                      <p>Favor preencher os campos obrigatórios</p>
+                    ) : (
+                      <>
+                        <div onClick={goToCardPayment}>
+                          <Button
+                            title="Continuar com o pagamento"
+                            type="carrinho"
+                          >
+                            Continuar com o pagamento
+                          </Button>
+                        </div>
+                        <div onClick={returnCart}>
+                          <Button
+                            title="Voltar para o carrinho"
+                            type="carrinho"
+                          >
+                            Voltar para o carrinho
+                          </Button>
+                        </div>
+                      </>
+                    )}
                   </S.ContainerButton>
                 </>
               </S.ContainerForm>
@@ -443,26 +503,32 @@ const Cart = () => {
                     </div>
                   </S.InputDivNumber>
                   <S.ContainerButton>
-                    <div onClick={openCartConfirmationPayment}>
-                      <Button
-                        title="Finalizar pagamento"
-                        type="carrinho"
-                        disabled={isLoading}
-                      >
-                        {isLoading
-                          ? 'Finalizando pagamento...'
-                          : 'Finalizar pagamento'}
-                      </Button>
-                    </div>
+                    {checkPaymentHasError() ? (
+                      <p>Favor preencher todos os campos</p>
+                    ) : (
+                      <>
+                        <div onClick={openCartConfirmationPayment}>
+                          <Button
+                            title="Finalizar pagamento"
+                            type="carrinho"
+                            disabled={isLoading}
+                          >
+                            {isLoading
+                              ? 'Finalizando pagamento...'
+                              : 'Finalizar pagamento'}
+                          </Button>
+                        </div>
 
-                    <div onClick={returnCardDelivery}>
-                      <Button
-                        title="Voltar para a edição de endereço"
-                        type="carrinho"
-                      >
-                        Voltar para a edição de endereço
-                      </Button>
-                    </div>
+                        <div onClick={returnCardDelivery}>
+                          <Button
+                            title="Voltar para a edição de endereço"
+                            type="carrinho"
+                          >
+                            Voltar para a edição de endereço
+                          </Button>
+                        </div>
+                      </>
+                    )}
                   </S.ContainerButton>
                 </>
               </S.ContainerForm>

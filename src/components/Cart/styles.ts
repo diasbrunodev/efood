@@ -162,9 +162,11 @@ export const FormContainer = styled.form`
     border: 1px solid ${colors.backgroundFooter};
     background-color: ${colors.backgroundFooter};
     padding: 0 8px;
+    font-size: 14px;
+    font-weight: 700;
 
     &.error {
-      border: 1px solid red;
+      border: 3px solid red;
     }
   }
 
@@ -239,6 +241,12 @@ export const ContainerP = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+  }
 `
 
 export const CartEmpty = styled.p`
