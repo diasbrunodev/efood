@@ -42,7 +42,7 @@ O projeto traz a ideia de um site e-commerce. Sua página home recebe os dados d
 
 :heavy_check_mark: `Funcionalidade 4:` O carrinho tem todas as funcionalidades padrões, levando a um formulário para entrega do produto, que continua pelo pagamento até a confirmação do pedido
 
-## Layout
+## Layout 
 
 <div align="center">
 
